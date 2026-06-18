@@ -39,9 +39,9 @@ export default function Contact() {
         </div>
 
         <div className="mt-12 text-center text-gray-400 space-y-2">
-          <p>📧 isabel@art.com</p>
-          <p>📱 Facebook: /IsabelMonserratArt</p>
-          <p>📸 Instagram: @isabel.monserrat.art</p>
+          <p>📧 isabelmonserrat@icloud.com</p>
+          <p>📱 Facebook: /isabelmonserrat14</p>
+          <p>📸 Instagram: @lebasimonserrat</p>
         </div>
       </section>
     </main>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const products = [
-  { id: 1, title: "Sunset in Cavite", medium: "Oil on Canvas", price: 3500, available: true },
+  { id: 1, title: "Sunset in Tagaytay", medium: "Oil on Canvas", price: 3500, available: true },
   { id: 2, title: "Morning Bloom", medium: "Watercolor", price: 2800, available: true },
   { id: 3, title: "Silent Waters", medium: "Acrylic", price: 4200, available: false },
   { id: 4, title: "Golden Hour", medium: "Oil on Canvas", price: 5000, available: true },

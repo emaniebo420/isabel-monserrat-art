@@ -20,7 +20,7 @@ export default function About() {
         <h2 className="text-4xl font-bold text-center mb-4">Hi, I'm Isabel Monserrat</h2>
         <p className="text-center text-rose-400 mb-8 text-lg">Artist · Painter · Creator</p>
         <div className="space-y-5 text-gray-600 leading-relaxed text-lg">
-          <p>I'm a self-taught artist based in Cavite, Philippines, passionate about capturing emotions and moments through color and texture.</p>
+          <p>I'm a self-taught artist based in Tagaytay, Philippines, passionate about capturing emotions and moments through color and texture.</p>
           <p>My work spans oil painting, watercolor, and acrylic — each medium offering a unique way to express the beauty I see in everyday life.</p>
           <p>Every piece I create is original and one-of-a-kind. I also take commissions for custom portraits, landscapes, and abstract pieces.</p>
         </div>
