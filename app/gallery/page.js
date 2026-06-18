@@ -13,7 +13,7 @@ export default function Gallery() {
   return (
     <main className="min-h-screen bg-white">
       <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-sm">
-        <Link href="/" className="text-2xl font-bold tracking-tight">Maria's Art ✦</Link>
+        <Link href="/" className="text-2xl font-bold tracking-tight">Isabel Monserrat's Art ✦</Link>
         <div className="flex gap-6 text-sm font-medium">
           <Link href="/gallery" className="text-rose-500">Gallery</Link>
           <Link href="/shop" className="hover:text-rose-500 transition">Shop</Link>
