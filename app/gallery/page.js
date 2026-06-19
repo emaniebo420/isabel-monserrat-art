@@ -3,11 +3,6 @@ import Link from 'next/link';
 
 const artworks = [
   { id: 1, title: "Oasis", medium: "Oil on Canvas", price: 35000, image: "/images/art1.jpg" },
-  { id: 2, title: "Morning Bloom", medium: "Watercolor", price: 2800, image: null },
-  { id: 3, title: "Silent Waters", medium: "Acrylic", price: 4200, image: null },
-  { id: 4, title: "Golden Hour", medium: "Oil on Canvas", price: 5000, image: null },
-  { id: 5, title: "Wildflowers", medium: "Watercolor", price: 2200, image: null },
-  { id: 6, title: "Midnight Sky", medium: "Acrylic", price: 3800, image: null },
 ];
 
 export default function Gallery() {
