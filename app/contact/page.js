@@ -93,8 +93,8 @@ export default function Contact() {
 
         <div className="mt-12 text-center text-gray-400 space-y-2">
           <p>📧 lebasimonserrat@gmail.com</p>
-          <p>📱 Facebook: /IsabelMonserratArt</p>
-          <p>📸 Instagram: @isabelmonserrat.art</p>
+          <a href="https://facebook.com/isabelmonserrat14" target="_blank" className="hover:text-rose-500 transition block">📘 Facebook: /isabelmonserrat14</a>
+          <a href="https://instagram.com/lebasimonserrat" target="_blank" className="hover:text-rose-500 transition block">📸 Instagram: @lebasimonserrat</a>
         </div>
       </section>
 
