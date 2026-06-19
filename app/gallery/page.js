@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 const artworks = [
-  { id: 1, title: "Sunset in Tagaytay", medium: "Oil on Canvas", price: 3500 },
-  { id: 2, title: "Morning Bloom", medium: "Watercolor", price: 2800 },
-  { id: 3, title: "Silent Waters", medium: "Acrylic", price: 4200 },
-  { id: 4, title: "Golden Hour", medium: "Oil on Canvas", price: 5000 },
-  { id: 5, title: "Wildflowers", medium: "Watercolor", price: 2200 },
-  { id: 6, title: "Midnight Sky", medium: "Acrylic", price: 3800 },
+  { id: 1, title: "Oasis", medium: "Oil on Canvas", price: 35000, image: "/images/art1.jpg" },
+  { id: 2, title: "Morning Bloom", medium: "Watercolor", price: 2800, image: null },
+  { id: 3, title: "Silent Waters", medium: "Acrylic", price: 4200, image: null },
+  { id: 4, title: "Golden Hour", medium: "Oil on Canvas", price: 5000, image: null },
+  { id: 5, title: "Wildflowers", medium: "Watercolor", price: 2200, image: null },
+  { id: 6, title: "Midnight Sky", medium: "Acrylic", price: 3800, image: null },
 ];
 
 export default function Gallery() {
@@ -28,9 +28,7 @@ export default function Gallery() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {artworks.map((art) => (
             <div key={art.id} className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
-              <div className="w-full h-64 bg-rose-100 flex items-center justify-center group-hover:bg-rose-200 transition">
-                <span className="text-rose-300 text-5xl">🎨</span>
-              </div>
+              <img src={art.image} alt={art.title} className="w-full h-64 object-cover" />
               <div className="p-4">
                 <h3 className="font-semibold text-lg">{art.title}</h3>
                 <p className="text-gray-400 text-sm">{art.medium}</p>
