@@ -1,20 +1,16 @@
+'use client';
 import Link from 'next/link';
 
 const products = [
-  { id: 1, title: "Sunset in Tagaytay", medium: "Oil on Canvas", price: 3500, available: true },
-  { id: 2, title: "Morning Bloom", medium: "Watercolor", price: 2800, available: true },
-  { id: 3, title: "Silent Waters", medium: "Acrylic", price: 4200, available: false },
-  { id: 4, title: "Golden Hour", medium: "Oil on Canvas", price: 5000, available: true },
-  { id: 5, title: "Wildflowers", medium: "Watercolor", price: 2200, available: true },
-  { id: 6, title: "Midnight Sky", medium: "Acrylic", price: 3800, available: false },
+  { id: 1, title: "Oasis", medium: "Oil on Canvas", price: 35000, image: "/images/art1.jpg", available: true },
 ];
 
 export default function Shop() {
   return (
     <main className="min-h-screen bg-white">
-      <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-sm">
-        <Link href="/" className="text-2xl font-bold tracking-tight">Isabel Monserrat's Art ✦</Link>
-        <div className="flex gap-6 text-sm font-medium">
+      <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-sm sticky top-0 z-50">
+        <Link href="/" className="text-xl font-bold tracking-tight">Isabel Monserrat ✦</Link>
+        <div className="flex gap-4 text-sm font-medium">
           <Link href="/gallery" className="hover:text-rose-500 transition">Gallery</Link>
           <Link href="/shop" className="text-rose-500">Shop</Link>
           <Link href="/about" className="hover:text-rose-500 transition">About</Link>
@@ -22,25 +18,27 @@ export default function Shop() {
         </div>
       </nav>
 
-      <section className="px-8 py-16">
-        <h2 className="text-4xl font-bold text-center mb-4">Shop</h2>
-        <p className="text-center text-gray-400 mb-12">Own a piece of original art</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <section className="px-6 py-12">
+        <h2 className="text-3xl font-bold text-center mb-2">Shop</h2>
+        <p className="text-center text-gray-400 mb-10">Own a piece of original art</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {products.map((product) => (
-            <div key={product.id} className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition">
-              <div className="w-full h-64 bg-rose-100 flex items-center justify-center">
-                <span className="text-rose-300 text-5xl">🎨</span>
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-lg">{product.title}</h3>
-                <p className="text-gray-400 text-sm">{product.medium}</p>
-                <p className="text-rose-500 font-bold text-lg mt-1">₱{product.price.toLocaleString()}</p>
+            <div key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-48 md:h-64 object-cover"
+              />
+              <div className="p-3 md:p-4">
+                <h3 className="font-semibold text-sm md:text-lg">{product.title}</h3>
+                <p className="text-gray-400 text-xs md:text-sm">{product.medium}</p>
+                <p className="text-rose-500 font-bold mt-1 text-sm md:text-base">₱{product.price.toLocaleString()}</p>
                 {product.available ? (
-                  <button className="mt-3 w-full bg-rose-500 text-white py-2 rounded-full hover:bg-rose-600 transition font-medium">
+                  <button className="mt-3 w-full bg-rose-500 text-white py-2 rounded-full hover:bg-rose-600 transition font-medium text-sm">
                     Buy Now
                   </button>
                 ) : (
-                  <button className="mt-3 w-full bg-gray-200 text-gray-400 py-2 rounded-full cursor-not-allowed font-medium" disabled>
+                  <button className="mt-3 w-full bg-gray-200 text-gray-400 py-2 rounded-full cursor-not-allowed font-medium text-sm" disabled>
                     Sold Out
                   </button>
                 )}
@@ -49,6 +47,19 @@ export default function Shop() {
           ))}
         </div>
       </section>
+
+      <section className="px-6 py-12 bg-rose-50 text-center">
+        <h2 className="text-2xl font-bold mb-3">Want something custom?</h2>
+        <p className="text-gray-400 mb-6">Commission a painting made just for you</p>
+        <Link href="/contact" className="bg-rose-500 text-white px-8 py-3 rounded-full hover:bg-rose-600 transition font-medium inline-block">
+          Request a Commission
+        </Link>
+      </section>
+
+      <footer className="px-6 py-8 text-center text-gray-400 text-sm border-t border-gray-100">
+        <p className="font-semibold text-gray-600 mb-1">Isabel Monserrat ✦</p>
+        <p>© 2026 Isabel Monserrat. All rights reserved.</p>
+      </footer>
     </main>
   );
 }
