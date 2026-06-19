@@ -9,7 +9,7 @@ export default function Gallery() {
   return (
     <main className="min-h-screen bg-white">
       <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-sm sticky top-0 z-50">
-        <Link href="/" className="text-xl font-bold tracking-tight">Isabel Monserrat ✦</Link>
+        <Link href="/" className="text-xl font-bold tracking-tight">Isabel Monserrat  ♥</Link>
         <div className="flex gap-4 text-sm font-medium">
           <Link href="/gallery" className="text-rose-500">Gallery</Link>
           <Link href="/shop" className="hover:text-rose-500 transition">Shop</Link>
@@ -40,7 +40,7 @@ export default function Gallery() {
       </section>
 
       <footer className="px-6 py-8 text-center text-gray-400 text-sm border-t border-gray-100">
-        <p className="font-semibold text-gray-600 mb-1">Isabel Monserrat ✦</p>
+        <p className="font-semibold text-gray-600 mb-1">Isabel Monserrat  ♥</p>
         <p>© 2026 Isabel Monserrat. All rights reserved.</p>
       </footer>
     </main>
