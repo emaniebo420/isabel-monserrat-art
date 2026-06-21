@@ -18,7 +18,7 @@ export default function Gallery() {
               <img
                 src={art.image}
                 alt={art.title}
-                className="w-full h-48 md:h-64 object-cover"
+                className="w-full object-contain bg-gray-50"
               />
               <div className="p-3 md:p-4">
                 <h3 className="font-semibold text-sm md:text-lg">{art.title}</h3>
