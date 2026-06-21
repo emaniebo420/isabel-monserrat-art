@@ -13,14 +13,14 @@ export default function Shop() {
       <section className="px-6 py-12">
         <h2 className="text-3xl font-bold text-center mb-2">Shop</h2>
         <p className="text-center text-gray-400 mb-10">Own a piece of original art</p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {available.map((product) => (
             <div key={product.id}
               className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer">
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-48 md:h-64 object-cover"
+                className="w-full object-contain bg-gray-50"
               />
               <div className="p-3 md:p-4">
                 <h3 className="font-semibold text-sm md:text-lg">{product.title}</h3>
