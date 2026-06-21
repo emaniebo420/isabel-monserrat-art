@@ -25,9 +25,10 @@ export default function Shop() {
               <div className="p-3 md:p-4">
                 <h3 className="font-semibold text-sm md:text-lg">{product.title}</h3>
                 <p className="text-gray-400 text-xs md:text-sm">{product.medium}</p>
-                <button className="mt-3 w-full bg-rose-500 text-white py-2 rounded-full hover:bg-rose-600 transition font-medium text-sm">
+                <a href="/contact"
+                  className="mt-3 w-full bg-rose-500 text-white py-2 rounded-full hover:bg-rose-600 transition font-medium text-sm block text-center">
                   Inquire
-                </button>
+                </a>
               </div>
             </div>
           ))}
