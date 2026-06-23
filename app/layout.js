@@ -1,4 +1,15 @@
 import "./globals.css";
+import { Playfair_Display, Inter } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata = {
   title: "Isabel Monserrat — Filipino Artist | Original Paintings",
@@ -23,8 +34,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <body className="min-h-full flex flex-col font-inter">{children}</body>
     </html>
   );
 }
