@@ -4,16 +4,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-playfair: 'Playfair Display', serif;
-  --font-inter: 'Inter', sans-serif;
+  --background: #faf7f2;
+  --foreground: #1a1a1a;
+  --burgundy: #6b1e2e;
+  --cream: #faf7f2;
+  --gold: #c9a84c;
 }
 
 body {
-  background: #fff;
+  background: var(--cream);
   color: var(--foreground);
-  font-family: var(--font-inter);
 }
 
 h1, h2, h3 {
@@ -31,3 +31,11 @@ h1, h2, h3 {
   opacity: 1;
   transform: translateY(0);
 }
+
+.text-burgundy { color: #6b1e2e; }
+.bg-burgundy { background-color: #6b1e2e; }
+.border-burgundy { border-color: #6b1e2e; }
+.text-gold { color: #c9a84c; }
+.bg-gold { background-color: #c9a84c; }
+.bg-cream { background-color: #faf7f2; }
+.hover-burgundy:hover { color: #6b1e2e; }

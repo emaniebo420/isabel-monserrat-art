@@ -15,7 +15,8 @@ export default function Navbar({ active }) {
   return (
     <nav className="px-6 py-4 bg-white shadow-sm sticky top-0 z-50">
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold tracking-tight">
+        <Link href="/" className="text-xl font-bold tracking-tight"
+          style={{ color: '#1a1a1a' }}>
           Isabel Monserrat ♥
         </Link>
 
@@ -23,9 +24,8 @@ export default function Navbar({ active }) {
         <div className="hidden md:flex gap-4 text-sm font-medium">
           {links.map((link) => (
             <Link key={link.href} href={link.href}
-              className={active === link.label.toLowerCase()
-                ? 'text-rose-500'
-                : 'hover:text-rose-500 transition'}>
+              style={{ color: active === link.label.toLowerCase() ? '#6b1e2e' : '#1a1a1a' }}
+              className="transition hover:opacity-70">
               {link.label}
             </Link>
           ))}
@@ -46,9 +46,8 @@ export default function Navbar({ active }) {
           {links.map((link) => (
             <Link key={link.href} href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`text-base font-medium ${active === link.label.toLowerCase()
-                ? 'text-rose-500'
-                : 'hover:text-rose-500 transition'}`}>
+              style={{ color: active === link.label.toLowerCase() ? '#6b1e2e' : '#1a1a1a' }}
+              className="text-base font-medium transition hover:opacity-70">
               {link.label}
             </Link>
           ))}

@@ -11,10 +11,9 @@ export default function Shop() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen" style={{ background: '#faf7f2' }}>
       <Navbar active="shop" />
 
-      {/* Lightbox */}
       {selected && (
         <div
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
@@ -23,7 +22,7 @@ export default function Shop() {
           <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-2 right-2 text-white text-2xl hover:text-rose-400 bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center z-10"
+              className="absolute top-2 right-2 text-white text-2xl hover:opacity-70 bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center z-10"
             >
               ✕
             </button>
@@ -37,7 +36,8 @@ export default function Shop() {
               <p className="text-gray-400">{selected.medium}</p>
               <button
                 onClick={() => router.push('/contact')}
-                className="mt-4 inline-block bg-rose-500 text-white px-8 py-3 rounded-full hover:bg-rose-600 transition font-medium">
+                className="mt-4 inline-block px-8 py-3 rounded-full font-medium transition hover:opacity-90"
+                style={{ background: '#c9a84c', color: '#1a1a1a' }}>
                 Inquire About This Piece
               </button>
             </div>
@@ -47,7 +47,7 @@ export default function Shop() {
 
       <section className="px-6 py-12">
         <h2 className="text-3xl font-bold text-center mb-2">Shop</h2>
-        <p className="text-center text-gray-400 mb-10">Own a piece of original art</p>
+        <p className="text-center mb-10" style={{ color: '#6b6b6b' }}>Own a piece of original art</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {available.map((product) => (
             <div key={product.id}
@@ -61,13 +61,14 @@ export default function Shop() {
               />
               <div className="p-3 md:p-4">
                 <h3 className="font-semibold text-sm md:text-lg">{product.title}</h3>
-                <p className="text-gray-400 text-xs md:text-sm">{product.medium}</p>
+                <p className="text-xs md:text-sm" style={{ color: '#6b6b6b' }}>{product.medium}</p>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     router.push('/contact');
                   }}
-                  className="mt-3 w-full bg-rose-500 text-white py-2 rounded-full hover:bg-rose-600 transition font-medium text-sm">
+                  className="mt-3 w-full text-white py-2 rounded-full transition hover:opacity-90 font-medium text-sm"
+                  style={{ background: '#6b1e2e' }}>
                   Inquire
                 </button>
               </div>
@@ -76,11 +77,12 @@ export default function Shop() {
         </div>
       </section>
 
-      <section className="px-6 py-12 bg-rose-50 text-center">
+      <section className="px-6 py-12 text-center" style={{ background: '#faf7f2' }}>
         <h2 className="text-2xl font-bold mb-3">Want something custom?</h2>
-        <p className="text-gray-400 mb-6">Commission a painting made just for you</p>
+        <p className="mb-6" style={{ color: '#6b6b6b' }}>Commission a painting made just for you</p>
         <a href="/contact"
-          className="bg-rose-500 text-white px-8 py-3 rounded-full hover:bg-rose-600 transition font-medium inline-block">
+          className="px-8 py-3 rounded-full font-medium transition hover:opacity-90 inline-block text-white"
+          style={{ background: '#6b1e2e' }}>
           Request a Commission
         </a>
       </section>
