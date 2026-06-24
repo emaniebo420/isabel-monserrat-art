@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import artworks from '@/data/artworks';
+import BackToTop from '@/components/BackToTop';
 
 export default function Shop() {
   const available = artworks.filter((art) => art.available);
@@ -34,6 +35,8 @@ export default function Shop() {
             <div className="mt-4 text-center text-white">
               <h3 className="text-xl font-bold">{selected.title}</h3>
               <p className="text-gray-400">{selected.medium}</p>
+              <p className="text-gray-400 text-sm">{selected.size}</p>
+              <p className="text-gray-400 text-sm">{selected.year}</p>
               <button
                 onClick={() => router.push('/contact')}
                 className="mt-4 inline-block px-8 py-3 rounded-full font-medium transition hover:opacity-90"
@@ -48,20 +51,25 @@ export default function Shop() {
       <section className="px-6 py-12">
         <h2 className="text-3xl font-bold text-center mb-2">Shop</h2>
         <p className="text-center mb-10" style={{ color: '#6b6b6b' }}>Own a piece of original art</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {available.map((product) => (
             <div key={product.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col"
               onClick={() => setSelected(product)}
             >
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-full object-contain bg-gray-50"
-              />
-              <div className="p-3 md:p-4">
-                <h3 className="font-semibold text-sm md:text-lg">{product.title}</h3>
-                <p className="text-xs md:text-sm" style={{ color: '#6b6b6b' }}>{product.medium}</p>
+              {/* Fixed aspect ratio container */}
+              <div className="w-full bg-gray-50" style={{ aspectRatio: '3/4' }}>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="p-3 md:p-4 flex flex-col flex-1">
+                <h3 className="font-semibold text-sm md:text-base">{product.title}</h3>
+                <p className="text-xs md:text-sm truncate" style={{ color: '#6b6b6b' }}>{product.medium}</p>
+                <p className="text-xs" style={{ color: '#6b6b6b' }}>{product.size}</p>
+                <p className="text-xs mt-1" style={{ color: '#c9a84c' }}>{product.year}</p>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -87,6 +95,7 @@ export default function Shop() {
         </a>
       </section>
 
+      <BackToTop />
       <Footer />
     </main>
   );

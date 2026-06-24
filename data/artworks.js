@@ -2,11 +2,121 @@ const artworks = [
   {
     id: 1,
     title: "Oasis",
-    medium: "Oil on Canvas",
     year: "2024",
+    medium: "Oil on Canvas",
+    size: "24 x 36 inches",
     image: "/images/art1.jpg",
     available: true,
   },
+  {
+    id: 2,
+    title: "Strength",
+    year: "2024",
+    medium: "Mixed media (Oil, acrylic, foil and spray paint, plastic foam, modeling paste, acrylic flat beads, chipboard)",
+    size: "24 x 36 inches",
+    image: "/images/art2.jpg",
+    available: true,
+  },
+  {
+    id: 3,
+    title: "This is the start of how it all ends",
+    year: "2026",
+    medium: "Oil and acrylic on canvas",
+    size: "12x12 inches",
+    image: "/images/art3.jpg",
+    available: true,
+  },
+  {
+    id: 4,
+    title: "Audrey in Red",
+    year: "2023",
+    medium: "Acrylic on Canvas",
+    size: "20 x 22 inches",
+    image: "/images/art4.jpg",
+    available: true,
+  },
+  {
+    id: 5,
+    title: "Luxury of Creation",
+    year: "2023",
+    medium: "Mixed media on canvas (Oil, acrylic and textures)",
+    size: "47 x 34.5 inches",
+    image: "/images/art5.jpg",
+    available: true,
+  },
+  {
+    id: 6,
+    title: "Navigating Weightlessness",
+    year: "2024",
+    medium: "Mixed media on box type canvas (Oil, acrylic paint, modeling paste, canvas cloth, glitter varnish and flat beads)",
+    size: "48 x 60 inches",
+    image: "/images/art6.jpg",
+    available: true,
+  },
+  {
+    id: 7,
+    title: "Spiritual Redemption in Blue",
+    year: "2023",
+    medium: "Mixed media on canvas",
+    size: "24 x 36 inches",
+    image: "/images/art7.jpg",
+    available: true,
+  },
+  {
+    id: 8,
+    title: "Spiritual Redemption in Red",
+    year: "2023",
+    medium: "Oil and acrylic on canvas",
+    size: "24 x 36 inches",
+    image: "/images/art8.jpg",
+    available: true,
+  },
+  {
+    id: 9,
+    title: "The Source",
+    year: "2024",
+    medium: "Mixed Media on canvas (Acrylic paint, Acrylic markers, Oil paint, Modeling paste, Plastic texture, Flat beads, Spray paint)",
+    size: "36 x 48 inches",
+    image: "/images/art9.jpg",
+    available: true,
+  },
+  {
+    id: 10,
+    title: "To thine own self be true",
+    year: "2023",
+    medium: "Mixed media on canvas",
+    size: "36 x 48 inches",
+    image: "/images/art10.jpg",
+    available: true,
+  },
+  {
+    id: 11,
+    title: "The Star",
+    year: "2024",
+    medium: "Mixed Media on canvas (Acrylic paint, Acrylic markers, Oil paint, Modeling paste, Plastic texture, Flat beads, Spray paint)",
+    size: "28 x 40 inches",
+    image: "/images/art11.jpg",
+    available: true,
+  },
+  {
+    id: 12,
+    title: "Tres Marias",
+    year: "2022",
+    medium: "Mixed media on repurposed wood (Oil, acrylic, textures and sticker)",
+    size: "36 x 36 inches",
+    image: "/images/art12.jpg",
+    available: true,
+  }
+
+
+
+
+
+
+
+
+
+
   // Add more artworks here as she creates them:
   // {
   //   id: 2,

@@ -35,7 +35,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-full flex flex-col font-inter">{children}</body>
+      <body className="min-h-full flex flex-col font-inter" style={{ animation: 'fadeIn 0.4s ease' }}>
+        {children}
+      </body>
     </html>
   );
 }

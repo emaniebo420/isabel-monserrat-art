@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import artworks from '@/data/artworks';
+import BackToTop from '@/components/BackToTop';
 
 export default function Gallery() {
   const [selected, setSelected] = useState(null);
@@ -31,12 +32,8 @@ export default function Gallery() {
             <div className="mt-4 text-center text-white">
               <h3 className="text-xl font-bold">{selected.title}</h3>
               <p className="text-gray-400">{selected.medium}</p>
+              <p className="text-gray-400 text-sm">{selected.size}</p>
               <p className="text-gray-400 text-sm">{selected.year}</p>
-              <a href="/contact"
-                className="mt-4 inline-block px-8 py-3 rounded-full font-medium transition hover:opacity-90"
-                style={{ background: '#c9a84c', color: '#1a1a1a' }}>
-                Inquire About This Piece
-              </a>
             </div>
           </div>
         </div>
@@ -48,17 +45,20 @@ export default function Gallery() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {artworks.map((art) => (
             <div key={art.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col"
               onClick={() => setSelected(art)}
             >
-              <img
-                src={art.image}
-                alt={art.title}
-                className="w-full object-contain bg-gray-50"
-              />
-              <div className="p-3 md:p-4">
-                <h3 className="font-semibold text-sm md:text-lg">{art.title}</h3>
-                <p className="text-xs md:text-sm" style={{ color: '#6b6b6b' }}>{art.medium}</p>
+              {/* Fixed aspect ratio container */}
+              <div className="w-full bg-gray-50" style={{ aspectRatio: '3/4' }}>
+                <img
+                  src={art.image}
+                  alt={art.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="p-3 md:p-4 flex flex-col flex-1">
+                <h3 className="font-semibold text-sm md:text-base">{art.title}</h3>
+                <p className="text-xs md:text-sm truncate" style={{ color: '#6b6b6b' }}>{art.medium}</p>
                 <p className="text-xs mt-1" style={{ color: '#c9a84c' }}>{art.year}</p>
               </div>
             </div>
@@ -66,6 +66,7 @@ export default function Gallery() {
         </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </main>
   );
