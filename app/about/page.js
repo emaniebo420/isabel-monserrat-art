@@ -26,13 +26,13 @@ export default function About() {
 
         <div className="space-y-5 text-lg leading-relaxed" style={{ color: '#4a4a4a' }}>
           <p>
-            Isabel Monserrat (b. 1997) is a Filipino painter and sculptor whose practice interrogates the intersections of femininity, nature, memory and emotional healing. She is a Bachelor of Fine Arts, major in Painting from the University of Santo Tomas and is currently taking her Master’s degree in Fine Arts from the same university.
+            Isabel Monserrat (b. 1997) is a Filipino painter and sculptor whose practice explores the intersections of femininity, nature, memory, and emotional healing. She holds a Bachelor of Fine Arts in Painting from the University of Santo Tomas, where she is currently completing her Master of Fine Arts.
           </p>
           <p>
-            Isabel is a busy and prolific artist with over 50 exhibitions locally and internationally. Her work is known for its dream-like stories that celebrate womanhood, vulnerability and change. She builds spaces where beauty and imperfection meet, examining the resilience and intricacies of the human experience via organic shapes, symbolic imagery and layered visual narratives.
+            With over 50 local and international exhibitions to her name, Isabel has established herself as one of the more compelling voices in contemporary Filipino art. Her work unfolds in dream-like narratives that celebrate womanhood, vulnerability, and transformation — building spaces where beauty and imperfection coexist, and where the resilience of the human experience is rendered through organic forms, symbolic imagery, and layered visual storytelling.
           </p>
           <p>
-            Her art came from healing and self-discovery, and it invites the viewer into poetic worlds where feeling connects with nature. A personal reflection and a universal conversation that prompts reflection, connection and empowerment.
+            Her art came from healing and self-discovery. Each piece is at once a personal confession and an open invitation — drawing the viewer into poetic worlds where emotion meets the natural, and where feeling is given form. It is work that prompts reflection, fosters connection, and quietly insists on empowerment.
           </p>
         </div>
 
