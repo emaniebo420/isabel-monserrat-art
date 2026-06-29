@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,9 +7,16 @@ import artworks from '@/data/artworks';
 import BackToTop from '@/components/BackToTop';
 
 export default function Shop() {
-  const available = artworks;
+  const sorted = [...artworks].sort((a, b) => Number(b.available) - Number(a.available));
   const [selected, setSelected] = useState(null);
   const router = useRouter();
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e) => { if (e.key === 'Escape') setSelected(null); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected]);
 
   return (
     <main className="min-h-screen" style={{ background: '#faf7f2' }}>
@@ -50,55 +57,61 @@ export default function Shop() {
         </div>
       )}
 
-      <section className="px-6 py-12">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-      {available.map((product) => (
+      <section className="px-6 pt-12 pb-4 text-center">
+        <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#c9a84c' }}>Original Works</p>
+        <h2 className="text-3xl font-bold mb-2">Shop</h2>
+        <p style={{ color: '#6b6b6b' }}>Acquire an original painting — each piece is one of a kind.</p>
+      </section>
+
+      <section className="px-6 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          {sorted.map((product) => (
             <div key={product.id}
-      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col"
-      onClick={() => setSelected(product)}
-    >
-          <div className="w-full bg-gray-50 relative" style={{ aspectRatio: '3/4' }}>
-          <img
-            src={product.image}
-            alt={product.title}
-            className="absolute inset-0 w-full h-full object-contain"
-          />
-        {!product.available && (
-          <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium text-white"
-            style={{ background: '#6b1e2e' }}>
-            Sold
-          </div>
-        )}
-      </div>
-      <div className="p-3 md:p-4 flex flex-col flex-1">
-        <h3 className="font-semibold text-sm md:text-base line-clamp-2">{product.title}</h3>
-        <p className="text-xs md:text-sm truncate" style={{ color: '#6b6b6b' }}>{product.medium}</p>
-        <p className="text-xs" style={{ color: '#6b6b6b' }}>{product.size}</p>
-        <p className="text-xs mt-1" style={{ color: '#c9a84c' }}>{product.year}</p>
-        <div className="mt-auto pt-3">
-          {product.available ? (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                router.push('/contact');
-              }}
-              className="w-full text-white py-2 rounded-full transition hover:opacity-90 font-medium text-sm"
-              style={{ background: '#6b1e2e' }}>
-              Inquire
-            </button>
-          ) : (
-            <button
-              disabled
-              className="w-full py-2 rounded-full font-medium text-sm cursor-not-allowed"
-              style={{ background: '#e8e0d5', color: '#6b6b6b' }}>
-              Sold
-            </button>
-          )}
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col"
+              onClick={() => setSelected(product)}
+            >
+              <div className="w-full bg-gray-50 relative" style={{ aspectRatio: '3/4' }}>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="absolute inset-0 w-full h-full object-contain"
+                />
+                {!product.available && (
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium text-white"
+                    style={{ background: '#6b1e2e' }}>
+                    Sold
+                  </div>
+                )}
+              </div>
+              <div className="p-3 md:p-4 flex flex-col flex-1">
+                <h3 className="font-semibold text-sm md:text-base line-clamp-2">{product.title}</h3>
+                <p className="text-xs md:text-sm truncate" style={{ color: '#6b6b6b' }}>{product.medium}</p>
+                <p className="text-xs" style={{ color: '#6b6b6b' }}>{product.size}</p>
+                <p className="text-xs mt-1" style={{ color: '#c9a84c' }}>{product.year}</p>
+                <div className="mt-auto pt-3">
+                  {product.available ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push('/contact');
+                      }}
+                      className="w-full text-white py-2 rounded-full transition hover:opacity-90 font-medium text-sm"
+                      style={{ background: '#6b1e2e' }}>
+                      Inquire
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="w-full py-2 rounded-full font-medium text-sm cursor-not-allowed"
+                      style={{ background: '#e8e0d5', color: '#6b6b6b' }}>
+                      Sold
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-      ))}
-    </div>
       </section>
 
       <section className="px-6 py-12 text-center" style={{ background: '#faf7f2' }}>
