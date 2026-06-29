@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 import Link from 'next/link';
 
 export default function About() {
@@ -69,7 +70,7 @@ export default function About() {
             <div className="space-y-4">
               <div className="flex justify-between items-center border-b pb-4" style={{ borderColor: '#e8e0d5' }}>
                 <div>
-                  <a href="https://www.facebook.com/pugadniart/posts/1470766788427433/" target="_blank"
+                  <a href="https://www.facebook.com/pugadniart/posts/1470766788427433/" target="_blank" rel="noopener noreferrer"
                     className="font-semibold transition hover:opacity-70 underline underline-offset-2"
                     style={{ color: '#6b1e2e' }}>
                     Pugad ni Art Studio: Mankakait — Friendship
@@ -80,7 +81,7 @@ export default function About() {
               </div>
               <div className="flex justify-between items-center border-b pb-4" style={{ borderColor: '#e8e0d5' }}>
                 <div>
-                  <a href="https://www.facebook.com/ACCES.organization/posts/pfbid0sM61zynJE2bEqUzj2dSfkRhPxwheBAFBdpCaD1wKuwpb6ceP93c1hktq5YgnmQDbl" target="_blank"
+                  <a href="https://www.facebook.com/ACCES.organization/posts/pfbid0sM61zynJE2bEqUzj2dSfkRhPxwheBAFBdpCaD1wKuwpb6ceP93c1hktq5YgnmQDbl" target="_blank" rel="noopener noreferrer"
                     className="font-semibold transition hover:opacity-70 underline underline-offset-2"
                     style={{ color: '#6b1e2e' }}>
                     Art Capital — Let's Flourish
@@ -91,7 +92,7 @@ export default function About() {
               </div>
               <div className="flex justify-between items-center border-b pb-4" style={{ borderColor: '#e8e0d5' }}>
                 <div>
-                  <a href="https://www.facebook.com/ACCES.organization" target="_blank"
+                  <a href="https://www.facebook.com/ACCES.organization" target="_blank" rel="noopener noreferrer"
                     className="font-semibold transition hover:opacity-70 underline underline-offset-2"
                     style={{ color: '#6b1e2e' }}>
                     United Nations — Let's Flourish
@@ -102,7 +103,7 @@ export default function About() {
               </div>
               <div className="flex justify-between items-center border-b pb-4" style={{ borderColor: '#e8e0d5' }}>
                 <div>
-                  <a href="https://vienna101.com/tara-lets-contemporary-filipino-art-exhibit/?fbclid=IwY2xjawLGA9BleHRuA2FlbQIxMQBicmlkETFqRHZXSDVWYklubjRYd09sAR7LFK3B8S-dMiVakTAZuII8APX9nU4S5fg-ogmdStqbxyxLsGcJ2O-nf9F3IQ_aem_OmtXQpyLDQi_M3Aw6Qhymw" target="_blank"
+                  <a href="https://vienna101.com/tara-lets-contemporary-filipino-art-exhibit/?fbclid=IwY2xjawLGA9BleHRuA2FlbQIxMQBicmlkETFqRHZXSDVWYklubjRYd09sAR7LFK3B8S-dMiVakTAZuII8APX9nU4S5fg-ogmdStqbxyxLsGcJ2O-nf9F3IQ_aem_OmtXQpyLDQi_M3Aw6Qhymw" target="_blank" rel="noopener noreferrer"
                     className="font-semibold transition hover:opacity-70 underline underline-offset-2"
                     style={{ color: '#6b1e2e' }}>
                     Tara Let's! Contemporary Filipino Art
@@ -122,6 +123,7 @@ export default function About() {
           </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </main>
   );
