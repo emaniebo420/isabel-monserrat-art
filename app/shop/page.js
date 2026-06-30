@@ -8,6 +8,7 @@ import BackToTop from '@/components/BackToTop';
 
 export default function Shop() {
   const sorted = [...artworks].sort((a, b) => Number(b.available) - Number(a.available));
+  const availableCount = sorted.filter((a) => a.available).length;
   const [selected, setSelected] = useState(null);
   const router = useRouter();
 
@@ -37,20 +38,22 @@ export default function Shop() {
             <img
               src={selected.image}
               alt={selected.title}
-              className="w-full rounded-2xl object-contain max-h-[80vh]"
+              className="w-full rounded-2xl object-contain max-h-[75vh]"
             />
             <div className="mt-4 text-center text-white">
               <h3 className="text-xl font-bold">{selected.title}</h3>
               <p className="text-gray-400">{selected.medium}</p>
               <p className="text-gray-400 text-sm">{selected.size}</p>
               <p className="text-gray-400 text-sm">{selected.year}</p>
-              {selected.available && (
+              {selected.available ? (
                 <button
                   onClick={() => router.push('/contact')}
                   className="mt-4 inline-block px-8 py-3 rounded-full font-medium transition hover:opacity-90"
                   style={{ background: '#c9a84c', color: '#1a1a1a' }}>
                   Inquire About This Piece
                 </button>
+              ) : (
+                <p className="mt-4 text-sm" style={{ color: '#888' }}>This piece has found its home.</p>
               )}
             </div>
           </div>
@@ -61,21 +64,33 @@ export default function Shop() {
         <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#c9a84c' }}>Original Works</p>
         <h2 className="text-3xl font-bold mb-2">Shop</h2>
         <p style={{ color: '#6b6b6b' }}>Acquire an original painting — each piece is one of a kind.</p>
+        <p className="text-sm mt-2" style={{ color: '#c9a84c' }}>
+          {availableCount} of {sorted.length} works available
+        </p>
       </section>
 
       <section className="px-6 py-8">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {sorted.map((product) => (
-            <div key={product.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col"
+            <div
+              key={product.id}
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer flex flex-col"
               onClick={() => setSelected(product)}
             >
-              <div className="w-full bg-gray-50 relative" style={{ aspectRatio: '3/4' }}>
+              <div className="w-full bg-gray-50 relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
                 <img
                   src={product.image}
                   alt={product.title}
                   className="absolute inset-0 w-full h-full object-contain"
                 />
+                {/* Hover overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)' }}
+                >
+                  <p className="text-white font-semibold text-sm leading-tight">{product.title}</p>
+                  <p className="text-white text-xs" style={{ opacity: 0.75 }}>{product.year}</p>
+                </div>
                 {!product.available && (
                   <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium text-white"
                     style={{ background: '#6b1e2e' }}>
@@ -91,10 +106,7 @@ export default function Shop() {
                 <div className="mt-auto pt-3">
                   {product.available ? (
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        router.push('/contact');
-                      }}
+                      onClick={(e) => { e.stopPropagation(); router.push('/contact'); }}
                       className="w-full text-white py-2 rounded-full transition hover:opacity-90 font-medium text-sm"
                       style={{ background: '#6b1e2e' }}>
                       Inquire

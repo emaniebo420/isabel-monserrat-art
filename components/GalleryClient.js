@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import artworks from '@/data/artworks';
@@ -11,29 +11,72 @@ export default function Gallery() {
   const [selected, setSelected] = useState(null);
   const [filter, setFilter] = useState('All');
 
-  useEffect(() => {
-    if (!selected) return;
-    const onKey = (e) => { if (e.key === 'Escape') setSelected(null); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [selected]);
-
-  const filtered = artworks.filter((art) => {
+  const filtered = useMemo(() => artworks.filter((art) => {
     if (filter === 'Available') return art.available;
     if (filter === 'Sold') return !art.available;
     return true;
-  });
+  }), [filter]);
+
+  const selectedIndex = selected ? filtered.findIndex((a) => a.id === selected.id) : -1;
+
+  const goPrev = (e) => {
+    e.stopPropagation();
+    if (selectedIndex < 0) return;
+    setSelected(filtered[(selectedIndex - 1 + filtered.length) % filtered.length]);
+  };
+
+  const goNext = (e) => {
+    e.stopPropagation();
+    if (selectedIndex < 0) return;
+    setSelected(filtered[(selectedIndex + 1) % filtered.length]);
+  };
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e) => {
+      if (e.key === 'Escape') setSelected(null);
+      if (e.key === 'ArrowLeft') {
+        const idx = filtered.findIndex((a) => a.id === selected.id);
+        setSelected(filtered[(idx - 1 + filtered.length) % filtered.length]);
+      }
+      if (e.key === 'ArrowRight') {
+        const idx = filtered.findIndex((a) => a.id === selected.id);
+        setSelected(filtered[(idx + 1) % filtered.length]);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected, filtered]);
 
   return (
     <main className="min-h-screen" style={{ background: '#faf7f2' }}>
       <Navbar active="gallery" />
 
+      {/* Lightbox */}
       {selected && (
         <div
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
           onClick={() => setSelected(null)}
         >
-          <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
+          {/* Prev */}
+          <button
+            onClick={goPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center z-10 text-lg"
+            aria-label="Previous artwork"
+          >
+            ←
+          </button>
+
+          {/* Next */}
+          <button
+            onClick={goNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center z-10 text-lg"
+            aria-label="Next artwork"
+          >
+            →
+          </button>
+
+          <div className="relative max-w-3xl w-full mx-14" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setSelected(null)}
               className="absolute top-2 right-2 text-white text-2xl hover:opacity-70 bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center z-10"
@@ -43,13 +86,16 @@ export default function Gallery() {
             <img
               src={selected.image}
               alt={selected.title}
-              className="w-full rounded-2xl object-contain max-h-[80vh]"
+              className="w-full rounded-2xl object-contain max-h-[75vh]"
             />
             <div className="mt-4 text-center text-white">
               <h3 className="text-xl font-bold">{selected.title}</h3>
-              <p className="text-gray-400">{selected.medium}</p>
+              <p className="text-gray-400 mt-1">{selected.medium}</p>
               <p className="text-gray-400 text-sm">{selected.size}</p>
               <p className="text-gray-400 text-sm">{selected.year}</p>
+              <p className="text-xs mt-3" style={{ color: '#666' }}>
+                {selectedIndex + 1} / {filtered.length} &nbsp;·&nbsp; ← → to navigate
+              </p>
             </div>
           </div>
         </div>
@@ -60,7 +106,7 @@ export default function Gallery() {
         <p className="text-center mb-8" style={{ color: '#6b6b6b' }}>A collection of original works</p>
 
         {/* Filter tabs */}
-        <div className="flex justify-center gap-2 mb-10">
+        <div className="flex justify-center gap-2 mb-4">
           {FILTERS.map((f) => (
             <button
               key={f}
@@ -77,21 +123,34 @@ export default function Gallery() {
           ))}
         </div>
 
+        <p className="text-center text-sm mb-8" style={{ color: '#6b6b6b' }}>
+          {filtered.length} {filtered.length === 1 ? 'work' : 'works'}
+        </p>
+
         {filtered.length === 0 ? (
           <p className="text-center py-16" style={{ color: '#6b6b6b' }}>No artworks in this category.</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {filtered.map((art) => (
-              <div key={art.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col"
+              <div
+                key={art.id}
+                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer flex flex-col"
                 onClick={() => setSelected(art)}
               >
-                <div className="w-full bg-gray-50 relative" style={{ aspectRatio: '3/4' }}>
+                <div className="w-full bg-gray-50 relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
                   <img
                     src={art.image}
                     alt={art.title}
                     className="absolute inset-0 w-full h-full object-contain"
                   />
+                  {/* Hover overlay */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)' }}
+                  >
+                    <p className="text-white font-semibold text-sm leading-tight">{art.title}</p>
+                    <p className="text-white text-xs" style={{ opacity: 0.75 }}>{art.year}</p>
+                  </div>
                   {!art.available && (
                     <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium text-white"
                       style={{ background: '#6b1e2e' }}>

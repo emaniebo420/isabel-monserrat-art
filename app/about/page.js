@@ -25,6 +25,13 @@ export default function About() {
           Painter · Sculptor · Storyteller
         </p>
 
+        {/* Pull Quote */}
+        <div className="mb-10 border-l-4 pl-6 py-1" style={{ borderColor: '#c9a84c' }}>
+          <p className="text-xl italic leading-relaxed" style={{ color: '#6b1e2e' }}>
+            "I paint to heal, to confess, and to invite you into the spaces where feeling becomes form."
+          </p>
+        </div>
+
         <div className="space-y-5 text-lg leading-relaxed" style={{ color: '#4a4a4a' }}>
           <p>
             Isabel Monserrat (b. 1997) is a Filipino painter and sculptor whose practice explores the intersections of femininity, nature, memory, and emotional healing. She holds a Bachelor of Fine Arts in Painting from the University of Santo Tomas, where she is currently completing her Master of Fine Arts.
@@ -59,6 +66,21 @@ export default function About() {
               <p className="font-bold text-lg mb-1">Painting & Sculpture</p>
               <p className="text-sm" style={{ color: '#6b6b6b' }}>Mixed Media</p>
               <p className="text-sm" style={{ color: '#6b6b6b' }}>Oil · Acrylic · Texture</p>
+            </div>
+          </div>
+
+          {/* Mediums & Techniques */}
+          <div className="mb-12">
+            <p className="text-xs tracking-widest uppercase mb-6 text-center" style={{ color: '#c9a84c' }}>
+              Mediums &amp; Techniques
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['Oil on Canvas', 'Acrylic', 'Mixed Media', 'Modeling Paste', 'Epoxy Sculpture', 'Repurposed Wood', 'Spray Paint', 'Glitter Varnish'].map((m) => (
+                <span key={m} className="px-4 py-2 rounded-full text-sm border"
+                  style={{ background: '#fff', borderColor: '#e8e0d5', color: '#4a4a4a' }}>
+                  {m}
+                </span>
+              ))}
             </div>
           </div>
 
