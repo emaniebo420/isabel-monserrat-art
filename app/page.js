@@ -16,7 +16,7 @@ export default function Home() {
 
       {/* Hero — two column */}
       <section className="px-6 py-20 md:py-0 md:min-h-[90vh] flex items-center" style={{ background: '#faf7f2' }}>
-        <FadeIn>
+        <FadeIn className="w-full">
           <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: '#c9a84c' }}>
