@@ -17,7 +17,7 @@ export default function Home() {
       {/* Hero — two column */}
       <section className="px-6 py-20 md:py-0 md:min-h-[90vh] flex items-center" style={{ background: '#faf7f2' }}>
         <FadeIn className="w-full">
-          <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: '#c9a84c' }}>
                 Original Art by Isabel Monserrat
@@ -42,7 +42,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hidden md:flex justify-center">
+            <div className="hidden lg:flex justify-center">
               <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ width: '340px', aspectRatio: '3/4' }}>
                 <img
                   src="/images/art1.webp"

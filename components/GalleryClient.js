@@ -55,28 +55,18 @@ export default function Gallery() {
       {/* Lightbox */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-2 sm:p-4 gap-1 sm:gap-4"
           onClick={() => setSelected(null)}
         >
-          {/* Prev */}
           <button
             onClick={goPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center z-10 text-lg"
+            className="flex-shrink-0 text-white hover:opacity-70 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center text-lg"
             aria-label="Previous artwork"
           >
             ←
           </button>
 
-          {/* Next */}
-          <button
-            onClick={goNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center z-10 text-lg"
-            aria-label="Next artwork"
-          >
-            →
-          </button>
-
-          <div className="relative max-w-3xl w-full mx-14" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-3xl w-full min-w-0" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setSelected(null)}
               className="absolute top-2 right-2 text-white text-2xl hover:opacity-70 bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center z-10"
@@ -86,11 +76,11 @@ export default function Gallery() {
             <img
               src={selected.image}
               alt={selected.title}
-              className="w-full rounded-2xl object-contain max-h-[75vh]"
+              className="w-full rounded-2xl object-contain max-h-[65vh] sm:max-h-[75vh]"
             />
             <div className="mt-4 text-center text-white">
-              <h3 className="text-xl font-bold">{selected.title}</h3>
-              <p className="text-gray-400 mt-1">{selected.medium}</p>
+              <h3 className="text-lg sm:text-xl font-bold">{selected.title}</h3>
+              <p className="text-gray-400 mt-1 text-sm sm:text-base">{selected.medium}</p>
               <p className="text-gray-400 text-sm">{selected.size}</p>
               <p className="text-gray-400 text-sm">{selected.year}</p>
               <p className="text-xs mt-3" style={{ color: '#666' }}>
@@ -98,6 +88,14 @@ export default function Gallery() {
               </p>
             </div>
           </div>
+
+          <button
+            onClick={goNext}
+            className="flex-shrink-0 text-white hover:opacity-70 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center text-lg"
+            aria-label="Next artwork"
+          >
+            →
+          </button>
         </div>
       )}
 
@@ -106,7 +104,7 @@ export default function Gallery() {
         <p className="text-center mb-8" style={{ color: '#6b6b6b' }}>A collection of original works</p>
 
         {/* Filter tabs */}
-        <div className="flex justify-center gap-2 mb-4">
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
           {FILTERS.map((f) => (
             <button
               key={f}
